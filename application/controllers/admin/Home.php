@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
-
     public function __construct() {
         parent::__construct();
         // to give admin dashboard access to only the authorized user

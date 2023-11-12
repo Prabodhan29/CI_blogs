@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview ">
               <li class="nav-item">
-                <a href="<?php echo base_url() . 'admin/category/create'; ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == "category" && !empty($subModule) && $subModule == "createCategory") ? 'active' : '' ?>">
+                <a href="<?php echo base_url() . 'admin/category/create_category'; ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == "category" && !empty($subModule) && $subModule == "createCategory") ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>

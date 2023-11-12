@@ -1,7 +1,4 @@
     
-    
-
-  
     <?php include("header.php") ?>
     
     <!-- Content Header (Page header) -->
