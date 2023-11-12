@@ -40,6 +40,7 @@ class Category extends CI_Controller {
                     $image_data = $this->upload->data();
 
                     // to resize the uploaded image
+                    $this->load->library('image_lib');
                     $config_img['image_library'] = 'gd2';
                     $config_img['allowed_types'] = 'png|jpg|jpeg';
                     $config_img['source_image'] = './admin_section/uploads/category/'.$image_data['file_name'];
@@ -49,7 +50,7 @@ class Category extends CI_Controller {
                     $config_img['thumb_marker'] = '';
                     $config_img['width'] = 300;
                     $config_img['height'] = 270;
-                    $this->load->library('image_lib', $config_img);
+                    $this->image_lib->initialize($config_img);
                     $this->image_lib->resize();
                     $this->image_lib->clear(); 
                    
