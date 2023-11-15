@@ -68,8 +68,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item <?php echo (!empty($mainModule) && $mainModule == 'viewDashboard') ? 'menu-open' : '' ?>">
+            <a href="<?php echo base_url() . 'admin/home' ?>" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>
                 Dashboard
@@ -110,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url('admin/article/create'); ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == "article" && !empty($subModule) && $subModule == "createArticle") ? 'active' : '' ?>">
+                <a href="<?php echo base_url('admin/article/create_article'); ?>" class="nav-link <?php echo (!empty($mainModule) && $mainModule == "article" && !empty($subModule) && $subModule == "createArticle") ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Article</p>
                 </a>

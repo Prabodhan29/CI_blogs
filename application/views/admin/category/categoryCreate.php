@@ -1,4 +1,4 @@
-<?php $this->load->view("admin/header.php") ?>
+<?php $this->load->view("admin/header") ?>
 
 <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -76,4 +76,4 @@
   </div>
   <!-- /.content-wrapper -->
    
-<?php $this->load->view("admin/footer.php") ?>
+<?php $this->load->view("admin/footer") ?>

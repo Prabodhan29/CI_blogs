@@ -14,7 +14,8 @@ class Home extends CI_Controller
     }
 
     public function index() {
+        $data['mainModule'] = 'viewDashboard';
         $this->load->helper('url');
-        $this->load->view('admin/dashboard');
+        $this->load->view('admin/dashboard', $data);
     }
 }
