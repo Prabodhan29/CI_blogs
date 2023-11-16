@@ -30,4 +30,11 @@ class Category_model extends CI_Model {
         $this->db->where('categoryID', $id);
         $this->db->delete('categories');
     }
+
+    /* Frontend Functions */
+    public function getCategoriesFront($params = []) {
+        $this->db->where('categories.Status', 1);
+        $result = $this->db->get('categories')->result_array();
+        return $result;
+    }
 }

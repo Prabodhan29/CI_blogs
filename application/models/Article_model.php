@@ -29,12 +29,12 @@ class Article_model extends CI_Model {
 
     function getArticlesCount($param = array()) {
         if (isset($param['q'])) {
-            $this->db->or_like('title', trim($param['q']));
-            $this->db->or_like('author', trim($param['q']));
+            $this->db->or_like('Title', trim($param['q']));
+            $this->db->or_like('Author', trim($param['q']));
         }
 
         if (isset($param['category_id'])) {
-            $this->db->where('category', $param['category_id']);
+            $this->db->where('Category', $param['category_id']);
         }
 
         $count = $this->db->count_all_results('articles'); // to count number of rows
@@ -59,36 +59,28 @@ class Article_model extends CI_Model {
     }
 
 
-    /* Front Methods */
-
-
+    /* Frontend Methods */
     function getArticlesFront($param = array()) {
-
         if (isset($param['offset']) && isset($param['limit'])) {
             $this->db->limit($param['offset'], $param['limit']);
         }
 
         if (isset($param['q'])) {
-            $this->db->or_like('title', trim($param['q']));
-            $this->db->or_like('author', trim($param['q']));
+            $this->db->or_like('Title', trim($param['q']));
+            $this->db->or_like('Author', trim($param['q']));
         }
 
         if (isset($param['category_id'])) {
-            $this->db->where('category', $param['category_id']);
+            $this->db->where('Category', $param['category_id']);
         }
 
-        $this->db->select('articles.*,categories.name as category_name');
-        $this->db->where('articles.status', 1);
-        $this->db->order_by('articles.created_at', 'DESC');
-
-
-        $this->db->join('categories', 'categories.id=articles.category', 'left');
+        $this->db->select('articles.*,categories.Name as category_name');
+        $this->db->where('articles.Status', 1);
+        $this->db->order_by('articles.createdAt', 'DESC');
+        $this->db->join('categories', 'categories.categoryID = articles.Category', 'left');
 
         $query = $this->db->get('articles');
-
         $articles = $query->result_array();
-        //echo $this->db->last_query();
-
         return $articles;
     }
 }
