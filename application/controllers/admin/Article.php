@@ -15,6 +15,7 @@ class Article extends CI_Controller {
     // to display article listing
     public function index($page = 1) {
         $this->load->model('Article_model');
+        $this->load->helper('common_helper');
      
         // pagination
         $perpage = 2;
@@ -22,34 +23,10 @@ class Article extends CI_Controller {
         $param['limit'] = ($page * $perpage) - $perpage;
         $param['q'] = $this->input->get('q');
 
-        $this->load->library('pagination');
-        $config['base_url'] = base_url('admin/article/index');
-        $config['total_rows'] = $this->Article_model->getArticlesCount($param);
-        $config['per_page'] = $perpage;
-        $config['use_page_numbers'] = true;
+        $base_url = base_url('admin/article/index');
+        $total_rows = $this->Article_model->getArticlesCount($param);
+        $pagination_links = addPagination($base_url, $total_rows, $perpage);
 
-        $config['first_link'] = 'First';
-        $config['last_link'] = 'Last';
-        $config['next_link'] = 'Next';
-        $config['prev_link'] = 'Prev';
-        $config['full_tag_open'] = "<ul class='pagination'>";
-        $config['full_tag_close'] = "</ul>";
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-        $config['cur_tag_open'] = "<li class='disabled page-item'><li class='active page-item'><a href='#' class=\"page-link\">";
-        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-        $config['next_tag_open'] = "<li class=\"page-item\">";
-        $config['next_tagl_close'] = "</li>";
-        $config['prev_tag_open'] = "<li  class=\"page-item\">";
-        $config['prev_tagl_close'] = "</li>";
-        $config['first_tag_open'] = "<li  class=\"page-item\">";
-        $config['first_tagl_close'] = "</li>";
-        $config['last_tag_open'] = "<li  class=\"page-item\">";
-        $config['last_tagl_close'] = "</li>";
-        $config['attributes'] = array('class' => 'page-link');
-
-        $this->pagination->initialize($config);
-        $pagination_links = $this->pagination->create_links();
         $articles = $this->Article_model->getArticles($param);
 
         $data['q'] = $this->input->get('q');
