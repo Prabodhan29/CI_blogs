@@ -22,7 +22,7 @@ function addPagination($base_url, $total_rows, $perpage) {
 
     $config['base_url'] = $base_url;
     $config['total_rows'] = $total_rows;
-    $config['uri_segment'] = 4;
+    //$config['uri_segment'] = 4; codeigniter does this automatically
     $config['per_page'] = $perpage;
     $config['use_page_numbers'] = true;
 
